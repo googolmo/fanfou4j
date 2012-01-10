@@ -25,6 +25,7 @@ public class FanfouTest {
 	 * Weibo客户端(帐号密码)
 	 */
 	private Fanfou fanfou = new Fanfou("googolmo@gmail.com", "yy418650662");
+//    private Fanfou fanfou=new Fanfou()
 	
 	/**
 	 * 好友帐号ID， 必须是好友关系(与已登录帐号互相关注)
@@ -135,7 +136,7 @@ public class FanfouTest {
 //		assertTrue(new_mention.equals(status.get(0)));
 		
 		// update the newest status
-		Status newest_mention = fanfou.getMentions().get(1);
+		Status newest_mention = fanfou.getMentions().get(0);
 		// get the newest mentions list
 		List<Status> new_mentions = fanfou.getMentions(newest_mention.getId());
 		
@@ -359,13 +360,13 @@ public class FanfouTest {
 	public void testShowUser() throws Exception {
 		
 		// update a status for test user's last status
-		Status status = fanfou.updateStatus(msg);
+//		Status status = fanfou.updateStatus(msg);
 		
 		// need to test(not all)
 		Map<String, Object> expect = new HashMap<String, Object>();
-		expect.put("id", "aFanfou");
-		expect.put("name", "aFanfou");
-		expect.put("screen_name", "aFanfou");
+		expect.put("id", "snailyang");
+		expect.put("name", "googolmo");
+		expect.put("screen_name", "googolmo");
 		expect.put("location", "湖北 武汉");
 		expect.put("gender", "男");
 		expect.put("birthday", "2011-01-01");
@@ -444,7 +445,6 @@ public class FanfouTest {
 		}
 		
 		// clean up
-		fanfou.destroyStatus(status.getId());
 	}
 	
 	// 发送私信
