@@ -141,7 +141,7 @@ public class FanfouTest {
 		
 		// just one status(the newest status)
 		Assert.assertEquals(1, new_mentions.size());
-		assertTrue(new_mentions.get(0).equals(newest_mention));
+		assertTrue(new_mentions.get(0).getText().equals(newest_mention.getText()));
 
 	}
 	
@@ -203,35 +203,28 @@ public class FanfouTest {
 	public void testDestroyStatus() throws Exception {
 
 		// update some status in case have no status
-//		fanfou.updateStatus(msg);
+		fanfou.updateStatus(msg);
 //		fanfou.updateStatus(msg);
 
 		User myself = fanfou.showUser(fanfou.getUserId());
-		List<Status> status = fanfou.getUserTimeline();
-		int all_status_count = myself.getStatusesCount();
-		int page = (int) Math.ceil( all_status_count / 20.0 );
+		Status status = fanfou.getUserTimeline().get(1);
 
-		int delete_count = 0;
+
+
 
 		// delete status as much as API can
-		for (int i = 1; i <= page; i++) {
-			List<Status> status_per = fanfou.getUserTimeline(i, 20);
-			for (Status s : status_per) {
-//				System.out.println(s.getText());
-				fanfou.destroyStatus(s.getId());
-				delete_count++;
-			}
-		}
 
-		List<Status> status_left = fanfou.getUserTimeline();
+//				System.out.println(s.getText());
+		Status del_status=fanfou.destroyStatus(status.getId());
+
+
+
 //		System.out.println(status.size() - status_left.size() == delete_count );
 //		System.out.println(status.size());
 //		System.out.println(status_left.size());
 //		System.out.println(delete_count);
-		Assert.assertTrue(delete_count > 0);
+		Assert.assertTrue(del_status.getText().equalsIgnoreCase(status.getText()));
 
-		// update one status in case
-		fanfou.updateStatus("clean up on " + new Date());
 	}
 	
 	// 照片上传
