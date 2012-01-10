@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=utf-8" %>
-<%@ page language="java" import="weibo4j.http.*" %>
-<%@ page language="java" import="weibo4j.*" %>
+<%@ page language="java" import="fanfou4j.http.*" %>
+<%@ page language="java" import="fanfou4j.*" %>
 
 <jsp:useBean id="weboauth" scope="session" class="weibo4j.examples.WebOAuth" />
 <%
