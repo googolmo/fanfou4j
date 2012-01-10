@@ -2,7 +2,7 @@
 <%@ page language="java" import="fanfou4j.http.*" %>
 <%@ page language="java" import="fanfou4j.*" %>
 
-<jsp:useBean id="weboauth" scope="session" class="weibo4j.examples.WebOAuth" />
+<jsp:useBean id="weboauth" scope="session" class="fanfou4j.examples.WebOAuth" />
 <%
 	
 	String verifier=request.getParameter("oauth_verifier");
