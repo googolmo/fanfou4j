@@ -1,0 +1,10 @@
+.classpath
+.project
+.settings/
+.idea/workspace.xml
+.DS_Store
+classes
+target
+*.id
+*.id
+*.log
